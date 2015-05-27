@@ -1,0 +1,14 @@
+{% if LINKS %}
+<nav "pure-menu links-menu">
+  <h4 class="pure-menu-heading">Links</h4>
+    <ul class="pure-menu-list">
+      {% for name, link in LINKS %}
+      <li class="pure-menu-item">
+          <a class="pure-menu-link" href="{{ link }}" target="_blank">
+              {{ name }}
+          </a>
+      </li>
+      {% endfor %}
+    </ul>
+</nav>
+{% endif %}

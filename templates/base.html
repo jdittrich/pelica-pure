@@ -1,0 +1,101 @@
+{# based on https://github.com/DandyDev/pelican-bootstrap3 (MIT) #}
+
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock %}">
+<head>
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# Favicons are a touchy subject. For reasoning for the following code, see: http://stackoverflow.com/a/23851464/872397 #}
+    {% if FAVICON %}
+    <link href="{{ SITEURL }}/{{ FAVICON }}" rel="icon">
+    {% endif %}
+    {% if FAVICON_IE %}
+    <!--[if IE]><link rel="shortcut icon" href="{{ SITEURL }}/{{ FAVICON_IE }}"><![endif]-->
+    {% endif %}
+    {% if TOUCHICON %}
+    <link rel="apple-touch-icon" href="{{ SITEURL }}/{{ TOUCHICON }}">
+    {% endif %}
+
+    {% block canonical_rel %}{% endblock %}
+
+    {% block meta %}
+    <meta name="author" content="{{ AUTHOR }}" />
+    {% endblock %}
+
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pure-min.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/grids-responsive-min.css" type="text/css"/>
+    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/custom.css" rel="stylesheet">{#ought to be changed#}
+
+</head>
+<body>
+  <div id="layout">
+     <div id="header">
+       <h1 id="site Title">
+         <a href="{{ SITEURL }}/">
+             {{ SITENAME }}
+         </a>
+      </h1>
+      <nav id="pagesnav">
+        <div class="pure-menu pure-menu-horizontal">
+          {% if MENUITEMS %}
+          <ul class="pure-menu-list menu-list-customlinks">
+            {% for title, link in MENUITEMS %}
+                <li class="pure-menu-item"><a class="pure-menu-link" href="{{ link }}">{{ title }}</a></li>
+            {% endfor %}
+          {% endif %}
+          </ul>
+          {% if DISPLAY_PAGES_ON_MENU %}
+          <ul class="pure-menu-list menu-list-pages">
+                <span class="pure-menu-heading">Pages</span>
+                {% for p in PAGES %}
+                     <li class="pure-menu-item{% if p == page %} active{% endif %}"><a href="{{ SITEURL }}/{{ p.url }}">
+                         {{ p.menulabel|default(p.title) }}
+                      </a></li>
+                {% endfor %}
+          </ul>
+          {% endif %}
+          {% if DISPLAY_CATEGORIES_ON_MENU %}
+          <ul class="pure-menu-list menu-list-categories">
+              <span class="pure-menu-heading">Categories</span>
+            {% for cat, null in categories %}
+              <li class="pure-menu-item{% if cat == category %} active{% endif %}">
+                  <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat | capitalize }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </nav>
+    </div>
+    <div id="main" class="pure-g">
+      {% if not HIDE_SIDEBAR or ABOUT_ME %}
+      <div id="content" class="pure-u-1  pure-u-md-4-5">
+      {% else %}
+      <div id="content" class="pure-u-1">
+      {% endif %}
+
+      {% block breadcrumbs %}
+      {% endblock %}
+
+      {% block content %}
+      {% endblock %}
+
+      </div>
+      {% if not HIDE_SIDEBAR or ABOUT_ME %}
+      <div id="sidebar" class="pure-u-1 pure-u-md-1-5">
+        {% if ABOUT_ME %}
+            {% include 'includes/aboutme.html' %}
+        {% endif %}
+        {% if not HIDE_SIDEBAR %}
+            {% include 'includes/sidebar.html' %}
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% include 'includes/footer.html' %}
+  </div>
+  {#include scripts here, like toggle menu#}
+</body>
+</html>
