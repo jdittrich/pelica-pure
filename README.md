@@ -1,12 +1,12 @@
-== Pelican Pure ==
+# Pelican Pure 
 
 A [pure](http://purecss.io/) based theme for [Pelican](http://blog.getpelican.com/), based on [pelican-bootstrap3](https://github.com/DandyDev/pelican-bootstrap3) (unsurprisingly, a bootstrap based theme for Pelican)
 
 Installation: Put the theme in a folder. Link that folder in your `pelicanconf.py` by setting the `THEME`-Variable like `THEME='link/to/pelican-pure'`
 
-== License ==
+## License 
 
-The MIT License (MIT)
+**The MIT License (MIT)**
 
 Copyright (c) 2014 Jan Dittrich
 
