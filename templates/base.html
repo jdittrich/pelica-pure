@@ -58,15 +58,15 @@
           {% if MENUITEMS %}
           <ul class="pure-menu-list menu-list-customlinks">
             {% for title, link in MENUITEMS %}
-                <li class="pure-menu-item"><a class="pure-menu-link" href="{{ link }}">{{ title }}</a></li>
+                <li class="pure-menu-item {% if page is defined and url == page.url %} active {% endif %}"><a class="pure-menu-link" href="{{ link }}">{{ title }}</a></li>
             {% endfor %}
-          {% endif %}
           </ul>
+          {% endif %}
           {% if DISPLAY_PAGES_ON_MENU %}
           <ul class="pure-menu-list menu-list-pages">
-                <span class="pure-menu-heading">Pages</span>
+                <span class="pure-menu-heading menu-heading-pages">Pages</span>
                 {% for p in PAGES %}
-                     <li class="pure-menu-item{% if p == page %} active{% endif %}"><a href="{{ SITEURL }}/{{ p.url }}">
+                     <li class="pure-menu-item{% if p == page %} active{% endif %}"><a class="pure-menu-link" href="{{ SITEURL }}/{{ p.url }}">
                          {{ p.menulabel|default(p.title) }}
                       </a></li>
                 {% endfor %}
@@ -74,10 +74,10 @@
           {% endif %}
           {% if DISPLAY_CATEGORIES_ON_MENU %}
           <ul class="pure-menu-list menu-list-categories">
-              <span class="pure-menu-heading">Categories</span>
+              <span class="pure-menu-heading menu-heading-categories">Categories</span>
             {% for cat, null in categories %}
               <li class="pure-menu-item{% if cat == category %} active{% endif %}">
-                  <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat | capitalize }}</a>
+                  <a class="pure-menu-link" href="{{ SITEURL }}/{{ cat.url }}">{{ cat | capitalize }}</a>
               </li>
             {% endfor %}
           </ul>
@@ -112,6 +112,6 @@
     </div>
     {% include 'includes/footer.html' %}
   </div>
-  {#include scripts here, like toggle menu#}
+  {# include scripts here, like toggle menu #}
 </body>
 </html>
