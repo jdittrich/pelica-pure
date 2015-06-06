@@ -1,4 +1,7 @@
-{% extends "article_list.html" %}
+
+{#{% extends "article_list.html" %} #}
+
+{% extends "base.html" %}
 
 {% block title %}Articles by {{ author }} - {{ SITENAME }}{% endblock %}
 
@@ -10,4 +13,8 @@
 			<li class="active">{{ AUTHOR }}</li>
 		</ol>
 	{% endif %}
+{% endblock %}
+
+{% block content %}
+	{% include 'includes/article_list.html' %}
 {% endblock %}

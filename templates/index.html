@@ -1,5 +1,9 @@
-{% extends "article_list.html" %}
+{#{% extends "article_list.html" %}#}
+
+{% extends "base.html" %}
+
 {% block canonical_rel %}<link rel="canonical" href="{{ SITEURL }}">{% endblock %}
+
 {% if DISPLAY_FULL_ARTICLES_ON_INDEX %}
 	{% block content %}
 		{% if articles %}
@@ -15,4 +19,6 @@
 		{% endif %}
 		{% include 'includes/pagination.html' %}
 	{% endblock content %}
+{% else %}
+	{% include 'includes/article_list.html' %}
 {% endif %}
