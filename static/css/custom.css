@@ -1,34 +1,110 @@
 /*general*/
  .pure-g > div { /*so all grid-able divs are border-box-sized*/
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+	/* Set your content font stack here: */
+	font-family: Georgia, Times, "Times New Roman", serif;
+}
 
-/*main area*/
+/*background*/
+body{
+	background: white;
+
+}
+
+/*wrapper*/
+#layout{ /*layout reset*/
+	margin: auto;
+	padding:0;
+	max-width: 50em;
+	background:white;
+}
+
 /*header*/
+#header{
+	padding:0 1em 0 1em;
+}
 #header h1{
   display: inline-block;
-  font-size:1em; /*mobile first small*/
+  font-size:1.8em; /*TODO: to mobile first small*/
+}
+
+#header h1 a{
+	text-decoration: none;
+	color: inherit;
 }
 
 #header #pagesnav{
-  display: inline-block;
+	display: inline-block;
 }
+
+#header nav{
+	vertical-align: top;
+	margin-bottom: 0;
+	border-bottom: 1px solid #efefef;
+	float:right;
+}
+
+#header nav .pure-menu-link, #header nav .pure-menu-heading{
+	padding-top:1.8em;
+}
+
+
+#header .pure-menu-heading{
+	display: none;
+}
+
 /*content*/
 #content{
-  padding:1em;
+	padding:1em;
+	line-height: 1.4em;
 }
+
+#content h1 a, #content h2 a, #content h3 a{
+	text-decoration: none;
+	color: #3d6b80
+}
+
+#content h1 a:hover, #content h2 a:hover, #content h3 a:hover{
+	text-decoration: underline;
+}
+
+
+
 /*Text*/
+#content{
+	color:#3b3b3b;
+}
+
+a{
+	color:#3d6b80;
+}
+
+
+
 
 /*sidebar*/
+#sidebar{padding-top:1em;}
+#sidebar .pure-menu .pure-menu-link{
+	white-space:normal; /*long links would otherwise force horizontal scroll. Bad. */
+}
 
+#sidebar h4{
+	margin-bottom: 0em;
+	font-weight: normal;
+
+}
 /*images*/
 
 /*footer*/
 footer{
 padding:1em;
+border-top:1px solid #efefef;
 }
 
 /*responsive stuff*/
@@ -43,34 +119,29 @@ padding:1em;
 
 @media screen and (min-width: 48em){ /*bigger than mid-sized*/
   #header h1{
-    font-size:2em;
   }
 }
 
 .active{
-  background: #AAA;
+	background-color: #3d6b80;
 }
+
+.active a{
+	color:white;
+}
+
 
 /*pagination*/
 ul.pagination{
-    list-style: none;
+	list-style: none;
 }
 
 ul.pagination li{
    display: inline-block;
-   /*vertical-align: middle;
-   padding:0.2em;
-   border: 1px gray solid;
-   min-width:1.5em;
-   text-align: center;*/
 }
 
 ul.pagination li{
-   /*display: inline-block;
-   vertical-align: middle;
-   padding:0.2em;
-   border: 1px gray solid;
-   min-width:1.5em;*/
+
 }
 
 .well{}
@@ -86,3 +157,4 @@ div.panel-group{}
 .disabled{} /*page in pagination*/
 .pagination{}
 .pager{}
+

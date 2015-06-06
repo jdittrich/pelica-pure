@@ -55,13 +55,32 @@
       </h1>
       <nav id="pagesnav">
         <div class="pure-menu pure-menu-horizontal">
+            {% if DISPLAY_INDEX_ON_PAGES_MENU %}
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item {% if not page %} active{% endif %}">
+                <a class="pure-menu-link" href="{{ SITEURL }}/{% if INDEX_SAVE_AS %}{{INDEX_SAVE_AS}}{% endif %}">
+                     Blog
+                </a></li>
+            </ul>
+            {% endif %}
+
           {% if MENUITEMS %}
           <ul class="pure-menu-list menu-list-customlinks">
             {% for title, link in MENUITEMS %}
-                <li class="pure-menu-item {% if page is defined and url == page.url %} active {% endif %}"><a class="pure-menu-link" href="{{ link }}">{{ title }}</a></li>
+                <li class="pure-menu-item"><a class="pure-menu-link" href="{{ link }}">{{ title }}</a></li>
             {% endfor %}
           </ul>
           {% endif %}
+
+          {% if DISPLAY_PAGEGROUPS_MENU and PAGE_ORDER%}
+            {% include 'includes/linkList_nested.html' %}
+          {% endif%}
+
+          {% if DISPLAY_MENU_EXCLUDE_SUBGROUPS and PAGE_ORDER %}
+            {% include 'includes/linkList_mainPages.html' %}
+          {% endif %}
+
+
           {% if DISPLAY_PAGES_ON_MENU %}
           <ul class="pure-menu-list menu-list-pages">
                 <span class="pure-menu-heading menu-heading-pages">Pages</span>
@@ -72,6 +91,7 @@
                 {% endfor %}
           </ul>
           {% endif %}
+
           {% if DISPLAY_CATEGORIES_ON_MENU %}
           <ul class="pure-menu-list menu-list-categories">
               <span class="pure-menu-heading menu-heading-categories">Categories</span>
@@ -101,17 +121,24 @@
       </div>
       {% if not HIDE_SIDEBAR or ABOUT_ME %}
       <div id="sidebar" class="pure-u-1 pure-u-md-1-5">
+
         {% if ABOUT_ME %}
             {% include 'includes/aboutme.html' %}
         {% endif %}
-        {% if not HIDE_SIDEBAR %}
-            {% include 'includes/sidebar.html' %}
-        {% endif %}
+
+        {% block sidebar %}
+            {% if not HIDE_SIDEBAR %}
+                {% include 'includes/sidebar.html' %}
+            {% endif %}
+        {% endblock %}
       </div>
       {% endif %}
     </div>
     {% include 'includes/footer.html' %}
   </div>
   {# include scripts here, like toggle menu #}
+  {% if DISPLAY_PAGEGROUPS_MENU and PAGEGROUPS_ORDER%}
+    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/scripts/pure-dropdown.js"></script>
+  {% endif%}
 </body>
 </html>

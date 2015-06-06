@@ -42,3 +42,14 @@
 			{{ page.content }}
 		</div>
 {% endblock %}
+
+{% block sidebar %}
+	{% if page.pagegroup and DISPLAY_RELATED_PAGES_ON_SIDEBAR %}
+	<nav class="pure-menu pagegroup-menu">
+		<h4 class="pure-menu-heading">Pages</h4>
+	    {% include 'includes/linkList_pageGroup.html' %}
+	</nav>	
+	{% else %}
+		{% include 'includes/sidebar.html' %}
+	{% endif %}
+{% endblock %}
