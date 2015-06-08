@@ -2,14 +2,14 @@
 {% block title %}{{ page.title }} - {{ SITENAME }}{% endblock %}
 {% block html_lang %}{{ page.lang }}{% endblock %}
 {% block meta %}
-	{% if page.author %}
-		<meta name="author" content="{{ page.author }}" />
-	{% else %}
-		<meta name="author" content="{{ AUTHOR }}" />
-	{% endif %}
-	{% if page.summary %}
-		<meta name="description" content="{{ page.summary|striptags|escape }}" />
-	{% endif %}
+    {% if page.author %}
+        <meta name="author" content="{{ page.author }}" />
+    {% else %}
+        <meta name="author" content="{{ AUTHOR }}" />
+    {% endif %}
+    {% if page.summary %}
+        <meta name="description" content="{{ page.summary|striptags|escape }}" />
+    {% endif %}
 {% endblock %}
 
 {% block canonical_rel %}
@@ -17,39 +17,39 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-	{% if DISPLAY_BREADCRUMBS %}
-	<ol class="breadcrumb">
-		<li><a href="{{ SITEURL }}" title="{{ SITENAME }}"></li>
-	  {% if page.url %}
-		<li class="active">{{ page.title }}</li>
-	  {% endif %}
-	</ol>
-	{% endif %}
+    {% if DISPLAY_BREADCRUMBS %}
+    <ol class="breadcrumb">
+        <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"></li>
+      {% if page.url %}
+        <li class="active">{{ page.title }}</li>
+      {% endif %}
+    </ol>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
-		<header>
-			<h1 class="entry-title">{{ page.title }}</h1>
-			{% import 'includes/translations.html' as translations with context %}
-			{{ translations.translations_for(page) }}
-			{% if PDF_PROCESSOR %}
-				<a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">
-					get the pdf
-				</a>
-			{% endif %}
-		</header>
-		<div class="page-content content">
-			{{ page.content }}
-		</div>
+        <header>
+            <h1 class="entry-title">{{ page.title }}</h1>
+            {% import 'includes/translations.html' as translations with context %}
+            {{ translations.translations_for(page) }}
+            {% if PDF_PROCESSOR %}
+                <a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">
+                    get the pdf
+                </a>
+            {% endif %}
+        </header>
+        <div class="page-content content">
+            {{ page.content }}
+        </div>
 {% endblock %}
 
 {% block sidebar %}
-	{% if page.pagegroup and DISPLAY_RELATED_PAGES_ON_SIDEBAR %}
-	<nav class="pure-menu pagegroup-menu">
-		<h4 class="pure-menu-heading">Pages</h4>
-	    {% include 'includes/linkList_pageGroup.html' %}
-	</nav>	
-	{% else %}
-		{% include 'includes/sidebar.html' %}
-	{% endif %}
+    {% if page.pagegroup and DISPLAY_RELATED_PAGES_ON_SIDEBAR %}
+    <nav class="pure-menu pagegroup-menu">
+        <h4 class="pure-menu-heading">Pages</h4>
+        {% include 'includes/linkList_pageGroup.html' %}
+    </nav>
+    {% else %}
+        {% include 'includes/sidebar.html' %}
+    {% endif %}
 {% endblock %}

@@ -1,7 +1,7 @@
 {#{% extends "base.html" %}#}
 {% if articles %}
     {% for article in (articles_page.object_list if articles_page else articles) %}
-        <article>
+        <article class="listed">
             <h2 class="article-headline"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
             {% if DISPLAY_ARTICLE_INFO_ON_INDEX %}
                 <div class="well">

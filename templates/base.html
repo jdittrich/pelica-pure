@@ -27,7 +27,7 @@
 
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pure-min.css" type="text/css"/>
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/grids-responsive-min.css" type="text/css"/>
-    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/custom.css" rel="stylesheet">{#ought to be changed#}
+    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/custom2.css" rel="stylesheet">{#ought to be changed#}
 
     {% if FEED_ALL_RSS %}
     <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate"
@@ -101,6 +101,12 @@
               </li>
             {% endfor %}
           </ul>
+          {% endif %}
+
+          {% DISPLAY_RELATED_PAGES_IN_HEADER and page and page.pagegroup %}
+          <div class="pure-menu pure-menu-horizontal pagegroup-menu">
+              {% include 'includes/linkList_pageGroup.html' %}
+          </div>
           {% endif %}
         </div>
       </nav>

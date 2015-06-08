@@ -3,18 +3,19 @@
 {% block title %}Authors - {{ SITENAME }}{% endblock %}
 
 {% block breadcrumbs %}
-	{% if DISPLAY_BREADCRUMBS %}
-		<ol class="breadcrumb">
-			<li><a href="{{ SITEURL }}" title="{{ SITENAME }}"></a></li>
-			<li class="active">Authors</li>
-		</ol>
-	{% endif %}
+    {% if DISPLAY_BREADCRUMBS %}
+        <ol class="breadcrumb">
+            <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"></a></li>
+            <li class="active">Authors</li>
+        </ol>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
-	<h1>Authors on {{ SITENAME }}</h1>
-	{% for author, articles in authors|sort %}
-		<li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
-	{% endfor %}
+    <h1>Authors on {{ SITENAME }}</h1>
+    <ul class="list-authors">
+    {% for author, articles in authors|sort %}
+        <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a> ({{ articles|count }})</li>
+    {% endfor %}
+    </ul>
 {% endblock %}
-{#TODO: do we miss a ul/ol up there?#}

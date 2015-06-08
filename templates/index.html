@@ -1,24 +1,22 @@
-{#{% extends "article_list.html" %}#}
-
 {% extends "base.html" %}
 
 {% block canonical_rel %}<link rel="canonical" href="{{ SITEURL }}">{% endblock %}
 
 {% if DISPLAY_FULL_ARTICLES_ON_INDEX %}
-	{% block content %}
-		{% if articles %}
-			{% for article in (articles_page.object_list if articles_page else articles) %}
-				<article>
-					<h2 class="article-headline"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-					<div class="panel">
-						{% include "includes/article_info.html" %}
-					</div>
-					{{ article.content }}
-				</article>
-			{% endfor %}
-		{% endif %}
-		{% include 'includes/pagination.html' %}
-	{% endblock content %}
+    {% block content %}
+        {% if articles %}
+            {% for article in (articles_page.object_list if articles_page else articles) %}
+                <article>
+                    <h2 class="article-headline"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+                    <div class="panel">
+                        {% include "includes/article_info.html" %}
+                    </div>
+                    {{ article.content }}
+                </article>
+            {% endfor %}
+        {% endif %}
+        {% include 'includes/pagination.html' %}
+    {% endblock content %}
 {% else %}
-	{% include 'includes/article_list.html' %}
+    {% include 'includes/article_list.html' %}
 {% endif %}

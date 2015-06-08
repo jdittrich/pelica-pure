@@ -1,20 +1,17 @@
-
-{#{% extends "article_list.html" %} #}
-
 {% extends "base.html" %}
 
 {% block title %}Articles by {{ author }} - {{ SITENAME }}{% endblock %}
 
 {% block breadcrumbs %}
-	{% if DISPLAY_BREADCRUMBS %}
-		<ol class="breadcrumb">
-			<li><a href="{{ SITEURL }}" title="{{ SITENAME }}"></a></li>
-			<li><a href="{{ SITEURL }}/{{ AUTHORS_URL|default('authors.html') }}" title="Authors">Authors</a></li>
-			<li class="active">{{ AUTHOR }}</li>
-		</ol>
-	{% endif %}
+    {% if DISPLAY_BREADCRUMBS %}
+        <ol class="breadcrumb">
+            <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"></a></li>
+            <li><a href="{{ SITEURL }}/{{ AUTHORS_URL|default('authors.html') }}" title="Authors">Authors</a></li>
+            <li class="active">{{ AUTHOR }}</li>
+        </ol>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
-	{% include 'includes/article_list.html' %}
+    {% include 'includes/article_list.html' %}
 {% endblock %}
