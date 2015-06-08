@@ -1,0 +1,20 @@
+{# generates a nested menu. Groups are all pages with the same value in the attribute groupname. page-order attribute needed. Recommanded: Set a page titeled like its groupname, give it the lowest page order number in the group, so it will appear first. #}
+
+{% if PAGEGROUPS_ORDER %}
+    <ul class="pure-menu-list">
+    {% for groupname in PAGEGROUPS_ORDER %}
+        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+        {# is there a page which has the name of the current group#}
+        <a href="#" class="pure-menu-link">{{groupname}}</a>
+        {# are there subitems?#}
+        <ul class="pure-menu-children menu-list-submenu">
+        {% for p in pages|sort(attribute='page-order') if p.pagegroup and p.pagegroup == groupname %}
+            <li class="pure-menu-item {% if p == page %}active {% endif %}">
+                <a href="{{ SITEURL }}/{{ p.url }}" class="pure-menu-link">{{p.title}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

@@ -1,0 +1,15 @@
+{# generates a  menu with only the pages that are in the PAGE_ORDER array. If the page has a groupname it is only included if the slug is the same as the the groupname.
+Should be used with pageGroupList.html to display the rest of the bunch (like a submenu for pages in the same group).
+ #}
+
+{% if PAGE_ORDER %}
+    <ul class="pure-menu-list">
+    {% for pagename in PAGE_ORDER %}
+        {%for p in pages if p.title == pagename%}
+            <li class="pure-menu-item {% if page and ((page.pagegroup and pagename == page.pagegroup) or (p == page)) %}active {% endif %}">
+                <a href="{{ SITEURL }}/{{ p.url }}" class="pure-menu-link">{{ p.title }}</a>
+            </li>
+        {% endfor %}
+    {% endfor %}
+    </ul>
+{% endif %}
