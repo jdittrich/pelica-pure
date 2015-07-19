@@ -1,5 +1,11 @@
+
+
 {% if DISPLAY_TAGS_ON_SIDEBAR is not defined %}
     {% set DISPLAY_TAGS_ON_SIDEBAR = True %}
+{% endif %}
+
+{% if ABOUT_ME %}
+ {% include 'includes/aboutme.html' %}
 {% endif %}
 
 {% if DISPLAY_RECENT_POSTS_ON_SIDEBAR %}

@@ -27,6 +27,16 @@
     {% endif %}
 {% endblock %}
 
+{% block contentstarttag %}
+
+  {% if not HIDE_SIDEBAR and not HIDE_SIDEBAR_ON_PAGES %}
+  <div id="content" class="pure-u-1  pure-u-md-4-5">
+  {% else %}
+  <div id="content" class="pure-u-1">
+  {% endif %}
+
+{% endblock %}
+
 {% block content %}
         <header>
             <h1 class="entry-title">{{ page.title }}</h1>
@@ -44,12 +54,15 @@
 {% endblock %}
 
 {% block sidebar %}
+{% if not HIDE_SIDEBAR and not HIDE_SIDEBAR_ON_PAGES %}
+<div id="sidebar" class="pure-u-1 pure-u-md-1-5">
     {% if page.pagegroup and DISPLAY_RELATED_PAGES_ON_SIDEBAR %}
     <nav class="pure-menu pagegroup-menu">
         <h4 class="pure-menu-heading">Pages</h4>
         {% include 'includes/linkList_pageGroup.html' %}
     </nav>
-    {% else %}
-        {% include 'includes/sidebar.html' %}
     {% endif %}
+    {% include 'includes/sidebar.html' %}
+</div>
+{% endif %}
 {% endblock %}

@@ -28,15 +28,13 @@ body{
 /*header*/
 #header{
 	padding:0 1em 0 1em;
-}
-#header h1{
-  display: inline-block;
-  font-size:1.8em; /*TODO: to mobile first small*/
+	display: block; 
+	display:-webkit-flex;
 }
 
-#header h1 a{
-	text-decoration: none;
-	color: inherit;
+#header #sitetitles{
+	display: inline-block;
+	padding-top:0.5em;
 }
 
 #header #pagesnav{
@@ -48,18 +46,17 @@ body{
 	margin-bottom: 0;
 	border-bottom: 1px solid #efefef;
 	float:right;
+	text-align: right;
 }
 
 #header nav .pure-menu-link, #header nav .pure-menu-heading{
 	padding-top:1.8em;
 }
 
-
 #header .pure-menu-heading{
 	display: none;
 }
-
-.active{
+.active a{
 	background-color: #3d6b80;
 }
 
@@ -67,14 +64,35 @@ body{
 	color:white;
 }
 
-.active:hover a{
+#header nav .pure-menu-item.active:hover a,.pure-menu-item.active:hover a {
 	color: white;
-    background-color: #49819a;
+  background-color: #49819a;
 }
-
 #header nav .pure-menu-item:hover a{
 	color: #3d6b80;
 }
+
+#header nav .pagesubgroup-menu{
+  border-top: 1px solid #efefef;
+	text-align:left;
+}
+
+#header nav .pagesubgroup-menu .pure-menu-link, #header nav .pagesubgroup-menu .pure-menu-heading, #header nav .pagesubgroup-menu .pure-menu-link:hover, #header nav .pagesubgroup-menu .active a, #header nav .pagesubgroup-menu .active:hover a {
+  padding-top:0.5em;
+  background-color: transparent;
+  color:gray;
+}
+
+#header nav .pagesubgroup-menu .active .pure-menu-link{
+	color:#2c586c;
+	background-color:#dfe3e5;
+}
+
+#header nav .pagesubgroup-menu li:hover{
+  background-color: rgba(0,0,0,0.05);
+}
+
+
 
 .post-info {
 	font-style: italic;
@@ -114,6 +132,7 @@ h1,  h2,  h3,  h4,  h5{
 	font-weight: normal;
 	margin-bottom:  0.5em;
 	font-style: italic;
+	line-height: 1.2em;
 }
 
 
@@ -124,8 +143,9 @@ h1{
 }
 
 h2{
-	font-size: 1.8em;
+	font-size: 1.7em;
 	font-style: italic;
+	margin-top: 2.5em;
 }
 
 h3{
@@ -133,7 +153,7 @@ h3{
 }
 
 #content h2, #content h3, #content h4{
-	margin-top: 1.4em
+	margin-top: 2.5em;
 }
 
 h3 + p {
@@ -144,16 +164,78 @@ h2 + p {
 	margin-top: 0.5em;
 }
 
-h1.article-headline, content > h1:first-of-type, #sidebar nav:first-of-type h4 {
+h1.article-headline, content > h1:first-of-type, #sidebar nav:first-of-type h4, h1.article-headline, content > h1:first-of-type, #sidebar nav:first-of-type h4, #content article:first-of-type h2{
 	margin-top:15px;
 }
 
+h1.article-headline{
+  font-size: 2.2em;
+}
+
+h2.article-headline{
+  font-size: 2.2em;
+}
+
+#sitetitles #sitetitle{
+	font-size:2.5em;
+	display:inline-block;
+	margin:0;
+	color: #AAA;
+	
+}
+
+#sitetitles #sitetagline{
+	font-size:0.8em;
+	color:gray;
+	margin:0.2em 0 0 0.4em;
+	display:inline-block;
+	line-height: 1em;
+}
+
+#header h1 a{
+	text-decoration: none;
+	color: inherit;
+	font-style:normal;
+}
 
 /*Text*/
 a{
 	color:#3d6b80;
 }
 
+#content .pure-g  div, #content .pure-g  article, #content .pure-g  section{
+	padding-right: 1.5em;
+}
+
+#content figure{
+margin: 0.5em 1em 1em 0.2em;
+}
+
+#content figure img{
+  outline: 1px solid rgba(0,0,0,0.1);
+  max-width: 100%;
+}
+
+#content figure figcaption{
+  color:gray;
+  font-style: italic;
+  padding-left: 0.1em;
+  max-width: 100%;
+}
+
+#content .pure-g > *{
+  box-sizing: border-box;
+  margin-left:0;
+  margin-right:0;
+}
+
+#content .pure-g > figure{
+  padding-right:1em;
+}
+
+#content figure.pure-g > figcaption{
+  padding-left:1em;
+}
 
 
 
@@ -193,14 +275,20 @@ article.listed + article.listed {
 
 article.listed{
 	border-bottom: 1px solid #efefef;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  font-size: 1em;
 }
 
+/*summary more*/
+.summaryLink{
+  font-weight: bold;
 
-
+}
 /*pagination*/
 ul.pagination{
 	list-style: none;
-    text-align: center;
+  text-align: center;
 }
 
 ul.pagination li {
@@ -227,12 +315,31 @@ ul.pagination li.active a:hover {
 		color:white;
 }
 
+li.pagination-item.disabled{
+  pointer-events: none;
+}
+
+li.pagination-item.disabled a{
+  color:lightgray;
+}
+
 .well{}
 .button-small{}
 .summary{}
 ol.breadcrumb{}
 div.panel-group{}
 .label{}
+
+/*image gallery*/
+
+
+/*get rid of this?*/
+.gallery img, gallery figure{
+	max-width: 100%;
+	max-height: 8em;
+	height: auto;
+	display: inline-block;
+}
 
 /*pagination*/
 .prev{}

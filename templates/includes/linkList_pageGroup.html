@@ -5,7 +5,7 @@
     <ul class="pure-menu-list"> {# include starts with ul so we can either wrap in into a horizontal or a vertical list #}
         {% for p in pages|sort(attribute='page-order') if p.pagegroup and p.pagegroup == page.pagegroup %}
             <li class="pure-menu-item {% if p == page %}active {% endif %}">
-                <a href="{{ SITEURL }}/{{ p.url }}" class="pure-menu-link">{{p.title}}</a>
+                <a href="{{ SITEURL }}/{{ p.url }}" class="pure-menu-link">{{ p.menulabel|default(p.title) }}</a>
             </li>
         {% endfor %}
 {% endif %}

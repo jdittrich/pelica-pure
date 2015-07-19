@@ -13,7 +13,7 @@ Set the path to a favicon. You can use as well the variable FAVICON_IE to set th
 
 
 ### Index pages
-DISPLAY_FULL_ARTICLES_ON_INDEX if true, the index page does not display summaries of the articles, but the full articles.
+DISPLAY_FULL_ARTICLES_ON_PAGELISTS if true, the index page does not display summaries of the articles, but the full articles.
 
 DISPLAY_ARTICLE_INFO_ON_INDEX if true, article info (date, tags) will be show under the title for each article instead of only title and summary.
 
@@ -24,13 +24,15 @@ HIDE_SIDEBAR if true, the sidebar is hidden and the layout has a single colum.
 DISPLAY_INDEX_ON_PAGES_MENU: if true, the index.html page gets a link with the title "blog" in the menu.
 
 DISPLAY_PAGEGROUPS_MENU: if true it generates a menu with nested groups. To recognize which pages belong to a group, you need to add the attribute "groupname" to your pages. As well each page should have a "page-order" attribute. Loads a script providing accessible navigation for the menu.
+Needs a PAGE_ORDER array.
 
-DISPLAY_MENU_EXCLUDE_SUBGROUPS: if true, generates a  menu with only the pages that have the same title as the entrys in the PAGE_ORDER array. Needs a PAGE_ORDER array.
+DISPLAY_MENU_EXCLUDE_SUBGROUPS: if true, generates a  menu with only the pages that have the same title as the entrys in the PAGE_ORDER array. 
 If the page has a groupname, it is only included in the main menu, if the slug is the same as the the groupname.
+Needs a PAGE_ORDER array.
 
 This should be used with one these two options:
 
-DISPLAY_RELATED_PAGES_ON_SIDEBAR: if true generates a generates a menu with all pages with the same groupname as the currently displayed page. It places the links in the sidebar.
+DISPLAY_RELATED_PAGES_ON_SIDEBAR: if true, generates a generates a menu with all pages with the same groupname as the currently displayed page. It places the links in the sidebar.
 
 DISPLAY_RELATED_PAGES_IN_HEADER: if true, generates a generates a menu with all pages with the same groupname as the currently displayed page. It places the links below the normal menu in the header.
 
@@ -45,14 +47,13 @@ ABOUT_ME if set to a string, this text will be included in the sidebar.
 If AVATAR is set to a link (`ìmages/myPortrait.jpg`) this will be included as well.  
 
 
-
-
-
 ## License
 
 **The MIT License (MIT)**
 
-Copyright (c) 2014 Jan Dittrich
+Copyright (c) 2015 Jan Dittrich
+Copyright (c) 2014 Daan Debie
+
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -27,11 +27,17 @@
 
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pure-min.css" type="text/css"/>
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/grids-responsive-min.css" type="text/css"/>
-    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/custom2.css" rel="stylesheet">{#ought to be changed#}
+
+    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/custom.css" rel="stylesheet">
 
     {% if FEED_ALL_RSS %}
     <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate"
           title="{{ SITENAME }} RSS Feed"/>
+    {% endif %}
+
+    {% if FEED_ALL_ATOM %}
+    <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate"
+          title="{{ SITENAME }} ATOM Feed"/>
     {% endif %}
 
     {% if tag and TAG_FEED_ATOM %}
@@ -48,12 +54,21 @@
 <body>
   <div id="layout">
      <div id="header">
-       <h1 id="site Title">
-         <a href="{{ SITEURL }}/">
-             {{ SITENAME }}
-         </a>
-      </h1>
+       <div id="sitetitles">
+        <h1 id="sitetitle">
+          <a href="{{ SITEURL }}/">
+              {{ SITENAME }}
+          </a>
+        </h1>
+        <h2 id="sitetagline">{{ TAGLINE }} </h2>
+      </div>
+
       <nav id="pagesnav">
+
+        {% if DISPLAY_RELATED_PAGES_ON_SIDEBAR or  DISPLAY_RELATED_PAGES_IN_HEADER %}
+            {% set DISPLAY_MENU_EXCLUDE_SUBGROUPS = True %}
+        {% endif %}
+
         <div class="pure-menu pure-menu-horizontal">
             {% if DISPLAY_INDEX_ON_PAGES_MENU %}
             <ul class="pure-menu-list">
@@ -72,7 +87,7 @@
           </ul>
           {% endif %}
 
-          {% if DISPLAY_PAGEGROUPS_MENU and PAGE_ORDER%}
+          {% if DISPLAY_PAGEGROUPS_MENU and PAGE_ORDER %}
             {% include 'includes/linkList_nested.html' %}
           {% endif%}
 
@@ -103,20 +118,22 @@
           </ul>
           {% endif %}
 
-          {% DISPLAY_RELATED_PAGES_IN_HEADER and page and page.pagegroup %}
-          <div class="pure-menu pure-menu-horizontal pagegroup-menu">
-              {% include 'includes/linkList_pageGroup.html' %}
-          </div>
-          {% endif %}
         </div>
+        {% if DISPLAY_RELATED_PAGES_IN_HEADER and page and page.pagegroup %}
+        <div class="pure-menu pure-menu-horizontal pagesubgroup-menu">
+            {% include 'includes/linkList_pageGroup.html' %}
+        </div>
+        {% endif %}
       </nav>
     </div>
     <div id="main" class="pure-g">
-      {% if not HIDE_SIDEBAR or ABOUT_ME %}
-      <div id="content" class="pure-u-1  pure-u-md-4-5">
-      {% else %}
-      <div id="content" class="pure-u-1">
-      {% endif %}
+      {% block contentstarttag %}
+        {% if not HIDE_SIDEBAR %}
+        <div id="content" class="pure-u-1  pure-u-md-4-5">
+        {% else %}
+        <div id="content" class="pure-u-1">
+        {% endif %}
+      {% endblock %}
 
       {% block breadcrumbs %}
       {% endblock %}
@@ -125,20 +142,14 @@
       {% endblock %}
 
       </div>
-      {% if not HIDE_SIDEBAR or ABOUT_ME %}
+
+      {% block sidebar %}
+      {% if not HIDE_SIDEBAR %}
       <div id="sidebar" class="pure-u-1 pure-u-md-1-5">
-
-        {% if ABOUT_ME %}
-            {% include 'includes/aboutme.html' %}
-        {% endif %}
-
-        {% block sidebar %}
-            {% if not HIDE_SIDEBAR %}
                 {% include 'includes/sidebar.html' %}
-            {% endif %}
-        {% endblock %}
       </div>
       {% endif %}
+      {% endblock %}
     </div>
     {% include 'includes/footer.html' %}
   </div>
