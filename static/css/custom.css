@@ -29,24 +29,21 @@ body{
 #header{
 	padding:0 1em 0 1em;
 	display: block; 
-	display:-webkit-flex;
+	display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 #header #sitetitles{
 	display: inline-block;
 	padding-top:0.5em;
-}
-
-#header #pagesnav{
-	display: inline-block;
+	margin-right:1em;
 }
 
 #header nav{
 	vertical-align: top;
 	margin-bottom: 0;
 	border-bottom: 1px solid #efefef;
-	float:right;
-	text-align: right;
 }
 
 #header nav .pure-menu-link, #header nav .pure-menu-heading{
@@ -133,9 +130,8 @@ h1,  h2,  h3,  h4,  h5{
 	margin-bottom:  0.5em;
 	font-style: italic;
 	line-height: 1.2em;
+	margin-top:1em;
 }
-
-
 
 h1{
 	font-size: 2.4em;
@@ -145,15 +141,14 @@ h1{
 h2{
 	font-size: 1.7em;
 	font-style: italic;
-	margin-top: 2.5em;
 }
 
 h3{
 	font-size: 1.3em;
 }
 
-#content h2, #content h3, #content h4{
-	margin-top: 2.5em;
+.page-content h2{
+	margin-top:2em;
 }
 
 h3 + p {
@@ -187,7 +182,7 @@ h2.article-headline{
 #sitetitles #sitetagline{
 	font-size:0.8em;
 	color:gray;
-	margin:0.2em 0 0 0.4em;
+	margin:0.2em 0.8em 0 0.4em;
 	display:inline-block;
 	line-height: 1em;
 }
@@ -280,11 +275,34 @@ article.listed{
   font-size: 1em;
 }
 
+#content article .summary h2{
+	font-size: 1.4em;
+}
+
+#content article .summary h3{
+	font-size:1.1em;
+}
+
+#content article .summary h4{
+	font-size:0.9em;
+}
+
+
 /*summary more*/
 .summaryLink{
-  font-weight: bold;
-
+    border: 1px solid #DDD;
+    padding: 0.3em;
+    font-weight: normal;
+    text-decoration: none;
+    background-color: white;
+    margin-left:-0.2em;
 }
+
+.summaryLink:hover{
+    text-decoration: underline;
+    background-color: #EEE;
+}
+
 /*pagination*/
 ul.pagination{
 	list-style: none;
@@ -348,15 +366,30 @@ div.panel-group{}
 .pagination{}
 .pager{}
 
+/*mobile menu*/
+#menuToggle{
+	display:none;
+	position:absolute;
+	right:0;
+	top:0;
+	padding:0.4em;
+	background:gray;
+	color:white;
+}
+
 
 @media screen and (max-width: 35.5em){ /*bigger than small*/
-
-	#header nav .pure-menu-link, #header nav .pure-menu-heading
-	{
+	
+	#header nav .pure-menu-link, #header nav .pure-menu-heading{
 	padding-top: 0.7em;
-    padding-bottom: 0.7em;
-    width: 80vw;
+	padding-bottom: 0.7em;
+	width: 80vw;
 	}
+	
+	#menuToggle{
+		display: block;
+	}
+	
 }
 
 @media screen and (min-width: 48em){ /*bigger than mid-sized*/
