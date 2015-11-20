@@ -1,21 +1,23 @@
-{# generates a nested menu. Groups are all pages with the same value in the attribute groupname. page-order attribute needed. Recommended: Set a page titeled like its groupname, give it the lowest page order number in the group, so it will appear first. #}
+{# generates a  menu with only the pages that are in the PAGE_ORDER array. If the page has a groupname it is only included if the slug is the same as the the groupname.
+Should be used with pageGroupList.html to display the rest of the bunch (like a submenu for pages in the same group).
+ #}
 
-{% if PAGEGROUPS_ORDER %}
+{% if PAGE_ORDER %}
     <ul class="pure-menu-list">
-    {% for groupname in PAGEGROUPS_ORDER %}
-        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-        {# is there a page which has the name of the current group#}
-        <a href="#" class="pure-menu-link">{{groupname}}</a>
-        {# are there subitems?#}
-        <ul class="pure-menu-children menu-list-submenu">
-        {% for p in pages|sort(attribute='page-order') if p.pagegroup and p.pagegroup == groupname %}
-            <li class="pure-menu-item {% if p == page %}active {% endif %}">
-                <a href="{{ SITEURL }}/{{ p.url }}" class="pure-menu-link">{{        p.menulabel|default(p.title) }}
+    {% for pagename in PAGE_ORDER %}
+        {% for p in pages if p.slug == pagename %}
+            <li class="pure-menu-item {% if page and ((page.pagegroup and pagename == page.pagegroup) or (p == page)) %}active {% endif %}">
+                <a href="{{ SITEURL }}/{{ p.url }}" class="pure-menu-link">
+                    {{ p.menulabel|default(p.title) }}
                 </a>
+
+                {% if page and page.pagegroup and ((page.pagegroup and pagename == page.pagegroup) or (p == page)) %} {# only include submenu if  #}
+                <div class="pure-menu pure-menu-horizontal nested-submenu pagesubgroup-menu">
+                    {% include 'includes/linkList_pageGroup.html' %}
+                </div>
+                {% endif %}
             </li>
         {% endfor %}
-        </ul>
-        </li>
     {% endfor %}
     </ul>
 {% endif %}

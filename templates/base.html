@@ -69,10 +69,10 @@
             {% set DISPLAY_MENU_EXCLUDE_SUBGROUPS = True %}
         {% endif %}
 
-        <div class="pure-menu pure-menu-horizontal">
+        <div class="pure-menu pure-menu-horizontal {% if  DISPLAY_PAGEGROUPS_MENU and PAGE_ORDER %}with-nested-submenu{% endif %}">
             {% if DISPLAY_INDEX_ON_PAGES_MENU %}
             <ul class="pure-menu-list">
-                <li class="pure-menu-item {% if not page %} active{% endif %}">
+                <li class="pure-menu-item">
                 <a class="pure-menu-link" href="{{ SITEURL }}/{% if INDEX_SAVE_AS %}{{INDEX_SAVE_AS}}{% endif %}">
                      Blog
                 </a></li>
