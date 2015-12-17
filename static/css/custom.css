@@ -372,16 +372,6 @@ ol.breadcrumb{}
 div.panel-group{}
 .label{}
 
-/*image gallery*/
-
-
-/*get rid of this?*/
-.gallery img, gallery figure{
-    max-width: 100%;
-    max-height: 8em;
-    height: auto;
-    display: inline-block;
-}
 
 /*pagination*/
 .prev{}
@@ -389,6 +379,8 @@ div.panel-group{}
 .disabled{} /*page in pagination*/
 .pagination{}
 .pager{}
+
+/*lines*/
 
 /*mobile menu toggle element*/
 #menuToggle{
