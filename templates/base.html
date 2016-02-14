@@ -72,7 +72,14 @@
         <div class="pure-menu pure-menu-horizontal {% if  DISPLAY_PAGEGROUPS_MENU and PAGE_ORDER %}with-nested-submenu{% endif %}">
             {% if DISPLAY_INDEX_ON_PAGES_MENU %}
             <ul class="pure-menu-list">
-                <li class="pure-menu-item">
+                {% if INDEX_SAVE_AS %}
+                <li class="pure-menu-item {%if output_file == 'index.html'%} active {% endif%}">
+                <a class="pure-menu-link" href="{{ SITEURL }}/">
+                     Home
+                </a>
+                </li>
+                {% endif %}{# if the blog posts are not listed on index.html and the index html is another page #}
+                <li class="pure-menu-item {%if articles_page or article%} active {% endif%}">{# articles page is only availiable on the index pages #}
                 <a class="pure-menu-link" href="{{ SITEURL }}/{% if INDEX_SAVE_AS %}{{INDEX_SAVE_AS}}{% endif %}">
                      Blog
                 </a></li>
