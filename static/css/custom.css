@@ -154,7 +154,7 @@ body{
 	color: #2e2e2e;
 }
 
-#content .content p, #content .content ul{
+#content .content p, #content .content > ul{
 	margin-top: 1.4em;
 	line-height: 1.4em;
 }
@@ -169,14 +169,16 @@ body{
 
 
 /*content lists*/
-#content ul{
-		list-style-type: square;
-		padding-left:0em;
+#content>ul{
+	list-style-type: square;
+	padding-left:0em;
 }
 
 #content ul li{
 		list-style-position: inside;
 }
+
+
 
 /*content headlines*/
 #content h1 a, #content h2 a, #content h3 a{
