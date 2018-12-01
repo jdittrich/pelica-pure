@@ -8,7 +8,7 @@
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
 		/* Set your content font stack here: */
-		font-family: Georgia, Times, "Times New Roman", serif;
+		font-family: Georgia, "Droid Serif",Cambria, Gentium, "Times New Roman", serif;
 }
 
 /*background*/
@@ -206,18 +206,20 @@ h1{
 h2{
 		font-size: 1.7em;
 		font-style: italic;
+		margin-top:2em;
 }
 
 h3{
 		font-size: 1.3em;
+		margin-top:1.5em;
 }
 
 .page-content h2{
-		margin-top:2em;
+		
 }
 
 .page-content h3{
-		margin-top:1.5em;
+		
 }
 
 h3 + p {
@@ -228,7 +230,7 @@ h2 + p {
 		margin-top: 0.5em;
 }
 
-h1.article-headline, content > h1:first-of-type, #sidebar nav:first-of-type h4, h1.article-headline, content > h1:first-of-type, #sidebar nav:first-of-type h4, #content article:first-of-type h2{
+h1.article-headline, content > h1:first-of-type, #sidebar nav:first-of-type h4, h1.article-headline, content > h1:first-of-type, #sidebar nav:first-of-type h4{
 		margin-top:15px;
 }
 
@@ -238,6 +240,7 @@ h1.article-headline{
 
 h2.article-headline{
 	font-size: 2.2em;
+	margin-top:15px;
 }
 
 
@@ -266,15 +269,28 @@ h2.article-headline{
 
 /*Text*/
 a {
-		color:#386072;
+	color:#386072;
 }
 
-#content a:visited{
+#content a {
+	color:#345869;
+	text-decoration:underline rgb(46, 99, 123);
+		
+}
+#content a:hover{
+	color:#5e8394;
+	text-decoration:underline #8ea6b1;
+}
+
+
+#content a:hover{
 	color:#647d88;
 }
 
+
+
 #content .pure-g  div, #content .pure-g  article, #content .pure-g  section{
-		padding-right: 1.5em;
+	padding-right: 1.5em;
 }
 
 /*content figures*/
@@ -318,8 +334,28 @@ margin: 0.5em 1em 1em 0.2em;
 	margin-left: 30px;
 	border-left: 2px solid rgba(0,0,0,0.1);
 	padding-left:1em;
+	font-style:italic;
 }
 
+#content blockquote em{
+	font-style:normal;
+
+}
+
+#content .footnote{
+	margin-top:2em;
+}
+
+/*footnote*/
+
+/*hr*/
+#content hr{
+    width: 4em;
+    border: none;
+    margin: 0 auto;
+    border-bottom: 1px solid hsl(0, 0%, 78.8%);
+    margin-left: calc(50% - 4em);
+}
 
 
 /*sidebar*/
@@ -441,6 +477,19 @@ ol.breadcrumb{}
 div.panel-group{}
 .label{}
 
+#content a.linkButton{
+	text-decoration: none; 
+	font-family: sans-serif;
+	text-decoration:none;
+	background-color: rgb(223, 227, 229);
+	border: 1px solid rgb(46, 99, 123);
+	color:rgb(56, 96, 114);
+}
+
+#content a.linkButton:hover{
+	color: rgb(142, 128, 128);
+	background-color: rgb(242, 242, 242);
+}
 
 /*pagination*/
 .prev{}
