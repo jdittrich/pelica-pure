@@ -54,16 +54,17 @@ body{
 
 #header nav .pure-menu-link, #header nav .pure-menu-heading{
 		padding-top:1.8em;
+		color: #646464;
 }
 
 #header .pure-menu-heading{
 		display: none;
 }
-.active a{
+#header .active a{
 		background-color: #386072;
 }
 
-.active a{
+#header .active a{
 		color:white;
 }
 
@@ -82,9 +83,6 @@ body{
 #header nav .nested-submenu.pagesubgroup-menu ul{ /*correct border for nested*/
 		 border-bottom: 1px solid #efefef;
 }
-
-
-
 
 #header nav .pagesubgroup-menu .pure-menu-link, #header nav .pagesubgroup-menu .pure-menu-heading, #header nav .pagesubgroup-menu .pure-menu-link:hover, #header nav .pagesubgroup-menu .active a, #header nav .pagesubgroup-menu .active:hover a {
 	padding-top:0.5em;
@@ -121,7 +119,7 @@ body{
 
 .post-info {
 		font-style: italic;
-		color: #989898;
+		color: #646464;
 		font-size: 0.9em;
 }
 
@@ -154,9 +152,9 @@ body{
 	color: #2e2e2e;
 }
 
-#content .content p, #content .content > ul{
-	margin-top: 1.4em;
-	line-height: 1.4em;
+#content .content p, #content .content > ul, #content .content blockquote > ul,  #content .content > ol{
+	margin-top: 1.5em;
+	line-height: 1.5em;
 }
 
 #content.pure-u-md-4-5 p{
@@ -249,7 +247,7 @@ h2.article-headline{
 		font-size:2.5em;
 		display:inline-block;
 		margin:0;
-		color: #AAA;
+		color: #8A8A8A;
 
 }
 
@@ -324,7 +322,16 @@ margin: 0.5em 1em 1em 0.2em;
 	padding-left:1em;
 }
 
+/*not all images are in figures*/
 
+#content img{
+	max-width: 100%
+}
+
+/*fake captions*/
+#content img+em{
+	display:block;
+}
 /*code*/
 #content code{
     font-size:0.95em
@@ -431,7 +438,7 @@ article.listed{
 
 /*pagination*/
 ul.pagination{
-		list-style: none;
+	list-style: none;
 	text-align: center;
 }
 
@@ -440,14 +447,13 @@ ul.pagination li {
 		text-align: center;
 		}
 
-ul.pagination li a {
+#content ul.pagination li a {
 		display: block;
 		min-width: 2em;
 		min-height: 1.8em;
 		text-decoration: none;
 		padding-top: 0.3em;
 		border:1px solid rgb(239, 239, 239);
-
 }
 
 ul.pagination li a:hover {
@@ -458,8 +464,9 @@ ul.pagination li.active a:hover {
 		background-color: #49819a;
 }
 
-#content ul.pagination li.active a:visited{
+#content ul.pagination li.active a{
 	color:white;
+	background: #386072;
 }
 
 li.pagination-item.disabled{
