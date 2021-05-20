@@ -62,7 +62,10 @@
         {% include 'includes/linkList_pageGroup.html' %}
     </nav>
     {% endif %}
-    {% include 'includes/sidebar.html' %}
+    
+    {% if page.pagegroup and not DISPLAY_RELATED_PAGES_ON_SIDEBAR %}
+        {% include 'includes/sidebar.html' %}
+    {% endif %}
 </div>
 {% endif %}
 {% endblock %}
